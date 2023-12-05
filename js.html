@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js" defer></script>
+    <script src="lab.js" defer></script>
     <!----======== CSS ======== -->
     <link rel="stylesheet" href="style.css">
 
@@ -25,7 +26,7 @@
                 </span>
 
                 <div class="text logo-text">
-                    
+
                     <span class="name">Chinnapat</span><i class='bx bx-coin-stack icon'></i>
                     <span class="profession">Web dev</span>
                 </div>
@@ -51,7 +52,7 @@
 
                     <li class="nav-link">
                         <a href="port.html">
-                            <i class='bx bx-user-pin icon' ></i>
+                            <i class='bx bx-user-pin icon'></i>
                             <span class="text nav-text">Portfolio</span>
                         </a>
                     </li>
@@ -70,13 +71,6 @@
                         </a>
                     </li>
 
-                    <li class="nav-link">
-                        <a href="lab.html">
-                            <i class='bx bx-edit icon'></i>
-                            <span class="text nav-text">LAB</span>
-                        </a>
-                    </li>
-                </ul>
             </div>
 
             <div class="bottom-content">
@@ -100,9 +94,51 @@
     </nav>
 
     <section class="home">
-        <div class="text">Home
+        <div class="text-head">Javascript - LAB
         </div>
-        
+
+
+        <div class="text">
+            <br>
+            <table border="0" style="width: 100%; height:100%;">
+            <tr >
+                <td style="padding-bottom: 100px; 
+                width: 50%;"><center>ปุ่ม Calculate <i class='bx bxs-calculator'></i><br>
+            <button class="custom-button calculate-button" onclick="calculate()">คำนวณ + , *</button>
+
+            <!-- ตำแหน่งที่แสดงผลลัพธ์ -->
+            <div id="result">
+                <p id="sumResult"></p>
+                <p id="mulResult"></p>
+            </center></div></td>
+            
+            <td padding-bottom: 100px;
+            width: 50%;><center>ปุ่ม ทอยเต๋า <i class='bx bx-dice-6'></i><br>
+            <button class="custom-button roll-button" id="rollButton" onclick="rollDice()">ทอยเต๋า</button>
+            
+            <!-- ตำแหน่งที่แสดงผลลัพธ์ของการทอยลูกเต๋า -->
+            <p id="resultText"></p></center></td>
+            </tr>
+            <tr style="padding-bottom: 50px;"><td padding-bottom: 100px;
+                width: 50%;><center>ทำให้ตัวหน้าเป็นพิมพ์ใหญ่ <i class='bx bx-up-arrow-alt'><i class='bx bx-up-arrow-alt'><i class='bx bx-up-arrow-alt'></i></i></i>
+            *ภาษาอังกฤษเท่านั้น*<br>
+            <input type="text" id="inputText" placeholder="ENG พิมพ์เล็กนะจ๊ะ" style="font-size: 18;"><br>
+            <button onclick="convertToUpperCase()">Do it</button>
+            <p id="output"></center></td>
+            <td padding-bottom: 100px;
+            width: 50%;><center>คำนวณเส้นทแยงมุม <i class='bx bx-shape-triangle'></i><br>
+                <button onclick="calculateHypotenuse()">คำนวณเลย!!</button>
+                <p id="result2"></p></center>
+            </td>
+            
+            </tr></table><table border="0" style="width: 100%;">
+            <tr><br><center><div class="text">แสดง Alert <i class='bx bx-error-alt'></i><br>
+                <button onclick="showAlert()">แสดง Alert</button></div></center>
+            </tr>
+            </p>
+            </table>
+        </div>
+
     </section>
 
 
