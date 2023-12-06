@@ -105,7 +105,7 @@ const jsonData = [
   ];
   
   // ดึง canvas element ที่มี id เป็น 'myChart'
-  const ctx2 = document.getElementById('myChart-2').getContext('2d');
+  const ctx2 = document.getElementById('myChart-2');
   
   // สร้าง arrays เพื่อเก็บข้อมูลสำหรับกราฟ
   const labels = jsonData.map(data => data.label);
