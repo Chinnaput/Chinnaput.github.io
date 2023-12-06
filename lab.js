@@ -1,3 +1,4 @@
+
 let calculator = {
     read() {
         this.a = prompt('Enter number 1:');
@@ -96,3 +97,40 @@ function calculateHypotenuse() {
     }
   });
 
+// ข้อมูล JSON สำหรับกราฟ
+const jsonData = [
+  { label: 'A', value: 10 },
+  { label: 'B', value: 20 },
+  { label: 'C', value: 15 },
+  // ...ข้อมูลอื่น ๆ
+];
+
+// ดึง canvas element ที่มี id เป็น 'myChart'
+const ctx2 = document.getElementById('myChart-2').getContext('2d');
+
+// สร้าง arrays เพื่อเก็บข้อมูลสำหรับกราฟ
+const labels = jsonData.map(data => data.label);
+const values = jsonData.map(data => data.value);
+
+// สร้าง Chart โดยใช้ข้อมูลจาก JSON
+new Chart2(ctx2, {
+  type: 'bar', // สร้างกราฟแบบ Bar Chart ในตัวอย่าง
+  data: {
+    labels: labels, // ใช้ labels จาก JSON
+    datasets: [{
+      label: 'Data',
+      data: values, // ใช้ values จาก JSON
+      backgroundColor: 'rgba(75, 192, 192, 0.2)', // สีพื้นหลังของแท่งกราฟ
+      borderColor: 'rgba(75, 192, 192, 1)', // สีเส้นขอบของแท่งกราฟ
+      borderWidth: 1
+    }]
+  },
+  options: {
+    // ตั้งค่าอื่น ๆ ของ Chart ตามต้องการ
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
