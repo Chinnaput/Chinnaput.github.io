@@ -94,3 +94,37 @@ form.addEventListener('submit', e => {
 })
 
 //Parameter API
+async function fetchserverstatus() {
+            document.getElementById("playername").innerHTML = "";
+
+
+            const parameterValue = document.getElementById('ipserver').value;
+
+            const mcAPI = `https://api.mcsrvstat.us/3/${parameterValue}`;
+            fetch(mcAPI).then(responseMcStatus => {
+                if (!responseMcStatus.ok) {
+                    throw new Error(`Network response was not ok: ${responseMcStatus.status}`);
+                }
+                return responseMcStatus.json();
+            }).then(mcAPI => {
+                
+                document.getElementById("resultContainer").innerHTML = "Player Online "+ mcAPI.players.online + "/" + mcAPI.players.max + "<br>PlayerList :" 
+                const playerInfoDiv = document.getElementById('playername');
+                mcAPI.players.list.forEach(player => {  
+                const playerName = player.name;
+                const playerUUID = player.uuid;
+                    
+                const playerInfoParagraph = document.createElement('p');
+
+
+                // Log or use the player information as needed
+                playerInfoParagraph.textContent = playerName
+                playerInfoDiv.appendChild(playerInfoParagraph);
+                console.log(playerName);
+                console.log("--------------------------");
+                
+                    
+                });;
+            })
+        }   
+                                
