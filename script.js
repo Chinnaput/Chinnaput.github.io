@@ -38,33 +38,59 @@ modeSwitch.addEventListener("click", () => {
     }
 });
 
+//Random
+function getShibaImages() {
+    const count = 4; // Change the count as desired (from 1 to 100)
+    const useUrls = true; // Change to false if you want only image URLs
+    const useHttpsUrls = true; // Change to false if you prefer HTTP URLs
 
-function getDogImage() {
-    // เรียกใช้ API โดยใช้ fetch ใน JavaScript
-    fetch('https://dog.ceo/api/breeds/image/random')
-        .then(response => response.json())
-        .then(data => {
-            // เรียกข้อมูลภาพสุนัขที่ได้จาก API
-            let imageUrl = data.message;
+    const apiUrl = `http://shibe.online/api/shibes?count=${count}&urls=${useUrls}&httpsUrls=${useHttpsUrls}`;
 
-            // แสดงภาพสุนัขในหน้า HTML
-            let dogImageElement = document.getElementById('dogImage');
-            dogImageElement.src = imageUrl;
+    fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Network response was not ok: ${response.status}`);
+            }
+            return response.json();
         })
-        .catch(error => console.error('Error fetching data:', error));
+        .then(data => {
+            displayShibaImages(data);
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
+        });
+}
+
+function displayShibaImages(images) {
+    const shibaImagesContainer = document.getElementById('shibaImages');
+    shibaImagesContainer.innerHTML = '';
+
+    images.forEach(imageUrl => {
+        const imgElement = document.createElement('img');
+        imgElement.src = imageUrl;
+        imgElement.style.maxWidth = '300px'; // Adjust the image size as needed
+        imgElement.style.margin = '5px';
+        shibaImagesContainer.appendChild(imgElement);
+    });
 }
 
 
-let runningTexts = document.querySelectorAll('.running-text');
-let colors = ['#FF0000', '#00FF00', '#0000FF']; // สีที่ต้องการเปลี่ยน
-let currentIndex = 0;
+//RainbowText
+const textElements = document.querySelectorAll('.Rainbowtext');
+textElements.forEach((element) => {
+    element.classList.add('slideIn');
+});
 
-setInterval(function () {
-    // เปลี่ยนสีของทุกๆ ข้อความที่มีคลาส .running-text
-    runningTexts.forEach(function (text) {
-        text.style.color = colors[currentIndex];
-    });
 
-    currentIndex = (currentIndex + 1) % colors.length; // เพิ่ม index และกำหนดให้เป็นสีที่มี index ใหม่
-}, 1000);
+//Sheet
+const scriptURL = 'https://script.google.com/macros/s/AKfycbx0N7jiqW-aU7CS-g-3_SOYXrHHHxHImdfaeuYNMdeRWfxQj1tZU6CYTLEddcKoemI/exec'
+const form = document.forms['contact']
 
+form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => document.getElementById("demo").innerHTML = "<div class='alert alert-primary' role='alert'>Add Success!!</div>", contact.reset())
+        .catch(error => console.error('Error!', error.message))
+})
+
+//Parameter API
